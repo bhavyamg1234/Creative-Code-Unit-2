@@ -5,8 +5,8 @@ countrysongchoice= {"Cleopatra by the Lumineers", "Saturday Sun by Vance Joy", "
 rocksongchoices= {"Achilles Come Down by Gangs of Youth", "Someone To You by Kings of Leon", "House of the Rising Sun by the Animals", "Blood by Gangs of Youth"}
 musicals= {"Epic the Musical", "Hadestown" ,"Death Becomes Her", "Twisted", "Into the Woods", "Wicked"}
 myText= "My favorite country song is "
-myText2= "my favorite rock song is "
-myText3= "my favorite musical is "
+myText2= "My favorite rock song is "
+myText3= "My favorite musical is "
 myfontSize=1
 
 function setup()
