@@ -253,8 +253,11 @@ pinkcircleD=543.6998
 pinkellipseX=61.5776 
 pinkellipseY=71.587
 
-lady=61.5776
-bug=288.3173
+lady=61.5776 
+bug=270
+
+tea=61.5776 
+bag=485
 
 
 
@@ -267,7 +270,8 @@ function draw()
   --call design functions
   drawfirstrowhorizontal()
   draw2ndrowhorizontal()
-  drawthirdrowhorizontal()
+  draw3rdrowhorizontal()
+  
   
 end
   
@@ -593,23 +597,25 @@ function drawfirstrowhorizontal()
     pop()
 
   end
-  --make rotation for loop into a grid
+    --make rotation for loop into a grid
   for i= 1,3 do
-    translate(180,0)
-    for i= 1,4 do
       push()
-      translate(pinkellipseX,pinkellipseY+40)
-      rectMode(CENTER)
-      rotate(i*90)
-      fill(255,72,176)
-      noStroke()
-      ellipse(0,-40,33.3044,55.8497)
-      ellipse(0,-80,23.3044,55.8497)
+      translate(180,0)
+      for i= 1,4 do
+        push()
+        translate(pinkellipseX,pinkellipseY+40)
+        rectMode(CENTER)
+        rotate(i*90)
+        fill(255,72,176)
+        noStroke()
+        ellipse(0,-40,33.3044,55.8497)
+        ellipse(0,-80,23.3044,55.8497)
+        pop()
+      end
       pop()
     end
-  end
 
-end
+ end
 
 function draw2ndrowhorizontal()
   --draw second row of yellow diamonds
@@ -759,12 +765,40 @@ function draw2ndrowhorizontal()
     translate(5,0)
     ellipse(pinkcircleA+(i*175),pinkcircleB,33.3044)
     pop()
-
   end
-   
+   --make four ellipse loop around pink circle
+  for i= 1,4 do
+    push()
+    translate(lady,bug+60)
+    rectMode(CENTER)
+    rotate(i*90)
+    fill(255,72,176)
+    noStroke()
+    ellipse(0,-40,33.3044,55.8497)
+    ellipse(0,-80,23.3044,55.8497)
+    pop()
+  end
+   --make rotation for loop into a grid
+  for i= 1,3 do
+    push()
+    translate(180,0)
+    for i= 1,4 do
+      push()
+      translate(lady,bug+60)
+      rectMode(CENTER)
+      rotate(i*90)
+      fill(255,72,176)
+      noStroke()
+      ellipse(0,-40,33.3044,55.8497)
+      ellipse(0,-80,23.3044,55.8497)
+      pop()
+    end
+    pop()
+  end
+
 end
 
-function drawthirdrowhorizontal()
+function draw3rdrowhorizontal()
   --make a diamond for row 3
   --make 2 yellow triangles as diamonds
   fill(255,232,0)
@@ -786,13 +820,7 @@ function drawthirdrowhorizontal()
     triangle(fish+(i*176),eye,fish2+(i*176),eye2,fish3+(i*176),eye3)
     pop()
   end
-
-  --draw blue ellipse in the center of each design
- 
-
-    
-
-  --draw blue ellipse for third row
+ --draw blue ellipse for third row
   fill(0,120,191)
   noStroke()
   ellipse(circleC,circleD,127.4365 ,164.4881)
@@ -802,13 +830,8 @@ function drawthirdrowhorizontal()
     translate(5,0)
     ellipse(circleC+(i*175),circleD,127.4365,164.4881 )
     pop()
-
-  end
-
-  --make yellow ellipse in center of blue ellipse
-  
- 
-  --make the thirc row of yellow circles
+ end
+ --make the third row of yellow circles
   fill(255,232,0)
   noStroke()
   ellipse(circleI,circleJ,109.5348,141.3816)
@@ -818,15 +841,8 @@ function drawthirdrowhorizontal()
     translate(5,0)
     ellipse(circleI+(i*175),circleJ,109.5348,141.3816)
     pop()
-
   end
-
-  
- 
-
-  
-
-  --make the third row of pink circles
+ --make the third row of pink circles
   fill(255,72,176)
   noStroke()
   ellipse(circleO,circleP,99.5903,128.5457)
@@ -836,15 +852,8 @@ function drawthirdrowhorizontal()
     translate(5,0)
     ellipse(circleO+(i*175),circleP,99.5903,128.5457)
     pop()
-
   end
-
-
- 
-
- 
-
-  --make the third row of yellow circles in the center of the pink
+ --make the third row of yellow circles in the center of the pink
   fill(255,232,0)
   noStroke()
   ellipse(circleU,circleV,92.2008,119.0077)
@@ -854,13 +863,7 @@ function drawthirdrowhorizontal()
     translate(5,0)
     ellipse(circleU+(i*175),circleV,92.2008,119.0077)
     pop()
-
-  end
-  
-  
-  
- 
-
+ end
   --make the third row of squares
   fill(255,72,176)
   noStroke()
@@ -872,11 +875,7 @@ function drawthirdrowhorizontal()
     square(squareC+(i*175),squareD,82.5892,20)
     pop()
   end
-
-
-  
-
-  --make a third row of squares
+ --make a third row of squares
   fill(255, 232,0)
   noStroke()
   square(squareI,squareJ,75.5883,20)
@@ -887,12 +886,7 @@ function drawthirdrowhorizontal()
     square(squareI+(i*175),squareJ,75.5883,20)
     pop()
   end
-
-  
-
- 
-
-  --make a third blue square row
+ --make a third blue square row
   fill(0,120,191)
   noStroke()
   square(squareO,squareP,72.5684,20)
@@ -903,12 +897,7 @@ function drawthirdrowhorizontal()
     square(squareO+(i*175),squareP,72.5684,20)
     pop()
   end
-
-  
-
-  
-
-  --make third row of yellow squares
+ --make third row of yellow squares
   fill(255,232,0)
   noStroke()
   square(squareU,squareV,62.1555 ,20)
@@ -919,12 +908,7 @@ function drawthirdrowhorizontal()
     square(squareU+(i*175),squareV,62.1555,20)
     pop()
   end
-
-  
-
-  
-
-   --make a third blue row
+ --make a third blue row
   fill(0,120,191)
   noStroke()
   circle(bluecircleC,bluecircleD,49.9387)
@@ -934,14 +918,8 @@ function drawthirdrowhorizontal()
     translate(5,0)
     ellipse(bluecircleC+(i*175),bluecircleD,49.9387)
     pop()
-
-  end
-
-  
-
-   
-
-  --make a 3rd row yellow circle in the center
+ end
+ --make a 3rd row yellow circle in the center
   fill(255,232,0)
   noStroke()
   circle(yellowcircleC,yellowcircleD,40.0096)
@@ -951,14 +929,8 @@ function drawthirdrowhorizontal()
     translate(5,0)
     ellipse(yellowcircleC+(i*175),yellowcircleD,40.0096)
     pop()
-
-  end
-
-
-
- 
-
-  --make 3rd row of pink circles
+ end
+ --make 3rd row of pink circles
   fill(255,72,176)
   noStroke()
   circle(pinkcircleC,pinkcircleD,33.3044)
@@ -968,9 +940,36 @@ function drawthirdrowhorizontal()
     translate(5,0)
     ellipse(pinkcircleC+(i*175),pinkcircleD,33.3044)
     pop()
-
   end
-
+   --make four ellipse loop around pink circle
+  for i= 1,4 do
+    push()
+    translate(tea,bag+60)
+    rectMode(CENTER)
+    rotate(i*90)
+    fill(255,72,176)
+    noStroke()
+    ellipse(0,-40,33.3044,55.8497)
+    ellipse(0,-80,23.3044,55.8497)
+    pop()
+  end
+  --turn into a grid
+  for i= 1,3 do
+    push()
+    translate(180,0)
+    for i= 1,4 do
+      push()
+      translate(tea,bag+60)
+      rectMode(CENTER)
+      rotate(i*90)
+      fill(255,72,176)
+      noStroke()
+      ellipse(0,-40,33.3044,55.8497)
+      ellipse(0,-80,23.3044,55.8497)
+      pop()
+    end
+    pop()
+  end
 
 
 end
