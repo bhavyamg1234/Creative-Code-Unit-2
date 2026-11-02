@@ -9,11 +9,14 @@ function setup()
   describe('Draws a black background')
   angleMode(DEGREES)
   rotNum=0
+  offset=0
+  offset2=500
+  
 
 
 end
 
-
+--Note to teacher: I had a really hard time coming up with variable names. If they seem really repetitive or odd, thats why. I apologize for the randomness that will be occuring in the next few lines of script
 --first blue row variables
 x=0
 y=0.0047
@@ -253,11 +256,82 @@ pinkcircleD=543.6998
 pinkellipseX=61.5776 
 pinkellipseY=71.587
 
+
 lady=61.5776 
 bug=270
 
 tea=61.5776 
 bag=485
+
+--make yellow ellipses in the center
+james=63
+madison= 110.2776 
+
+james2= 63
+madison2=327
+
+james3= 63
+madison3=543
+
+--make pink ellipses in center
+patrick=62
+henry= 110
+
+michael=62
+jackson=300
+
+patrick3= 62
+henry3= 543
+
+--blue spiral variables
+
+bluerectX= 60.1308
+bluerectY=115.204
+
+bluerectA=60.1308
+bluerectB=300.7966
+
+bluerectC= 60.1308
+bluerectD=510.7677
+
+--circle animation variables
+circlerowX=4.2131
+circlerowY=215.5289
+
+circlerowA=4.2131
+circlerowB=453.5238
+
+--riso blue
+risoBlueR = 0
+risoBlueG = 120
+risoBlueB = 191
+
+--riso pink
+risoPinkR = 255
+risoPinkG = 72
+risoPinkB = 176
+
+--riso yellow
+risoYellowR = 255
+risoYellowG = 232
+risoYellowB = 0
+
+--alpha values
+alpha1 = 30
+alpha2 = 60
+alpha3 = 90
+alpha4 = 120
+alpha5 = 150
+alpha6 = 180
+alpha7 = 210
+alpha8 = 240
+
+--color choice option
+colorChoices = {"blue","pink", "yellow"}
+
+alphaChoices= {alpha1, alpha2, alpha3, alpha4, alpha5, alpha6, alpha7, alpha8}
+
+
 
 
 
@@ -268,9 +342,14 @@ function draw()
   drawbluetriangles()
   drawpinktriangles()
   --call design functions
+  circlegrid()
+  squareanimation()
   drawfirstrowhorizontal()
   draw2ndrowhorizontal()
   draw3rdrowhorizontal()
+  
+ 
+  
   
   
 end
@@ -344,6 +423,24 @@ function drawbluetriangles()
     triangle(g+(i*178),h,g2+(i*178),h2,g3+(i*178),h3)
     pop()
   end
+
+  for i = 1, 9, 1 do
+    for j = 1, 9, 1 do
+      -- pick a random color and alpha and draw a circle
+      
+      currentColor = random(colorChoices)
+      currentAlpha = random(alphaChoices)
+      if frameCount%120==0 then
+        if currentColor == "blue" then
+          tint(risoBlueR,risoBlueG,risoBlueB,currentAlpha)
+        elseif currentColor == "pink" then
+          tint(risoPinkR,risoPinkG,risoPinkB,currentAlpha)
+        else
+          tint(risoYellowR,risoYellowG, risoYellowB, currentAlpha)
+        end
+      end
+    end
+  end
 end
 
 function drawpinktriangles()
@@ -412,6 +509,35 @@ function drawpinktriangles()
   end
 
 end
+
+
+  
+
+function circlegrid()
+
+  for circx = 0, 20 do
+    for circy = 0, 20 do
+      circlegridX = 15 + (circx * 30)
+      circlegridY = 15 + (circy * 30)
+      size3=random(5,20)
+      circle(circlegridX, circlegridY, size3)
+    end
+  end
+end
+
+function squareanimation()
+   for i = 0, 40 do
+    squareanimationx = random(width) + (i * 90)
+    squareanimationy= random(height) + sin(offset + i) * 50
+    fill(255,232,0)
+    square(squareanimationx,squareanimationy,50,20)
+  end
+
+  offset = offset + 0.1
+end
+
+
+
 
 function drawfirstrowhorizontal()
   --make yellow diamonds
@@ -614,7 +740,50 @@ function drawfirstrowhorizontal()
       end
       pop()
     end
+   --make another row of yellow circles circles
+    fill(255,232,0)
+    noStroke()
+    circle(james,madison,22.7935)
+    --make a grid with the ellipse
+    for i= 1,3 do
+     push()
+     translate(5,0)
+     circle(james+(i*175),madison,22.7935)
+     pop()
+    end
 
+   --make a spiral pattern
+   --make a blue rectangle
+    fill(0,120,191)
+    noStroke()
+    rect(bluerectX,bluerectY,3.8516,25.6231 )
+   for i= 1,8, 1 do
+      push()
+      translate(james,madison)
+      rotate (i*45)
+      fill(0,120,191)
+      noStroke()
+      rect(-5,0,3.8516,25.6231)
+      pop()
+  end
+  --make it into a grid
+   for i= 1,3 do
+      push()
+      translate(180,0)
+       fill(0,120,191)
+    noStroke()
+    rect(bluerectX,bluerectY,3.8516,25.6231)
+    for i= 1,8, 1 do
+      push()
+      translate(james,madison)
+      rotate (i*45)
+      fill(0,120,191)
+      noStroke()
+      rect(-5,0,3.8516,25.6231)
+      pop()
+    end
+      pop()
+    end
  end
 
 function draw2ndrowhorizontal()
@@ -795,7 +964,52 @@ function draw2ndrowhorizontal()
     end
     pop()
   end
-
+   
+  --make another row of yellow circles circles
+  fill(255,232,0)
+  noStroke()
+  circle(james2,madison2,22.7935)
+  --make a grid with the ellipse
+  for i= 1,3 do
+    push()
+    translate(5,0)
+    circle(james2+(i*175),madison2,22.7935)
+    pop()
+  end
+   --make a spiral pattern
+   --make a blue rectangle
+    fill(0,120,191)
+    noStroke()
+    rect(bluerectA,bluerectB,3.8516,25.6231 )
+   for i= 1,8, 1 do
+      push()
+      translate(james2,madison2)
+      rotate (i*45)
+      fill(0,120,191)
+      noStroke()
+      rect(-5,0,3.8516,25.6231)
+      pop()
+  end
+  --make it into a grid
+   for i= 1,3 do
+      push()
+      translate(180,0)
+       fill(0,120,191)
+    noStroke()
+    rect(bluerectA,bluerectB,3.8516,25.6231 )
+    for i= 1,8, 1 do
+      push()
+      translate(james2,madison2)
+      rotate (i*45)
+      fill(0,120,191)
+      noStroke()
+      rect(-5,0,3.8516,25.6231)
+      pop()
+    end
+      pop()
+    end
+  
+  
 end
 
 function draw3rdrowhorizontal()
@@ -970,6 +1184,53 @@ function draw3rdrowhorizontal()
     end
     pop()
   end
+  
+    --make another row of yellow circles circles
+  fill(255,232,0)
+  noStroke()
+  circle(james3,madison3,22.7935)
+  --make a grid with the ellipse
+  for i= 1,3 do
+    push()
+    translate(5,0)
+    circle(james3+(i*175),madison3,22.7935)
+    pop()
+  end
+   --make a spiral pattern
+   --make a blue rectangle
+    fill(0,120,191)
+    noStroke()
+    rect(bluerectC,bluerectD,3.8516,25.6231 )
+   for i= 1,8, 1 do
+      push()
+      translate(james3,madison3)
+      rotate (i*45)
+      fill(0,120,191)
+      noStroke()
+      rect(-5,0,3.8516,25.6231)
+      pop()
+  end
+  --make it into a grid
+   for i= 1,3 do
+      push()
+      translate(180,0)
+       fill(0,120,191)
+    noStroke()
+    rect(bluerectC,bluerectD,3.8516,25.6231 )
+    for i= 1,8, 1 do
+      push()
+      translate(james3,madison3)
+      rotate (i*45)
+      fill(0,120,191)
+      noStroke()
+      rect(-5,0,3.8516,25.6231)
+      pop()
+    end
+      pop()
+    end
 
+  
 
 end
+
+
